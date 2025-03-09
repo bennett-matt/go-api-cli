@@ -1,0 +1,17 @@
+package main
+
+import (
+    "context"
+
+	"{{.projectName}}/internal/api"
+)
+
+func (app *application) HealthCheck(ctx context.Context) (*api.HealthCheckOK, error) {
+	return &api.HealthCheckOK{
+		Status: api.NewOptString("available"),
+		SystemInfo: api.NewOptHealthCheckOKSystemInfo(map[string]string{
+			"environment": app.config.env,
+			"version":     version,
+		}),
+	}, nil
+}

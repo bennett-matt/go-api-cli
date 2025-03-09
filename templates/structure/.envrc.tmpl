@@ -1,0 +1,4 @@
+export {{ .envProjectName }}_DB_DSN=postgres://postgres:postgres@localhost/{{ .dbProjectName }}
+export GOOSE_DRIVER=postgres
+export GOOSE_DBSTRING=postgres://postgres:postgres@localhost/{{ .dbProjectName }}
+export GOOSE_MIGRATION_DIR=./migrations

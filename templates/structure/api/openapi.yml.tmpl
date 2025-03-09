@@ -1,0 +1,40 @@
+openapi: 3.0.3
+info:
+  title: "{{ .projectName}} API"
+  version: "v1.0.0"
+servers:
+  - url: /v1
+    description: "API Version 1"
+paths:
+  /v1/healthcheck:
+    get:
+      summary: "Health check endpoint"
+      operationId: "healthCheck"
+      responses:
+        "200":
+          description: "Service is healthy"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: "available"
+                  system_info:
+                    type: object
+                    additionalProperties:
+                      type: string
+                    example:
+                      environment: "production"
+                      version: "v1.0.0"
+        default:
+          description: "Unexpected error"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: "Internal server error"

@@ -1,0 +1,17 @@
+package data
+
+import (
+	"github.com/jackc/pgx/v5/pgxpool"
+	"errors"
+)
+
+var (
+	ErrRecordNotFound = errors.New("record not found")
+	ErrEditConflict   = errors.New("edit conflict")
+)
+
+type Models struct {}
+
+func NewModels(_ *pgxpool.Pool) Models {
+	return Models{}
+}
